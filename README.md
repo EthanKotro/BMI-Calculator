@@ -48,4 +48,4 @@ $$BMI = \frac{Weight (kg)}{Height (m)^2}$$
 | **≥ 30** | Obese | **Red** (#F44336) |
 
 
-![Preview](image.png)
+![Preview](Image.png)
