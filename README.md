@@ -14,12 +14,13 @@ The application has been designed with a focus on **modern Material Design 3** a
     *   **Background**: A soft off-white (`#F5F5F5`) background ensures high contrast and readability.
 
 ### Layout Components
-The main activity Layout (`activity_main.xml`) is built using a `ScrollView` and `ConstraintLayout` to ensure responsiveness across different device sizes.
+The main activity Layout (`activity_main.xml`) is built using a `CoordinatorLayout` and `NestedScrollView` to ensure responsiveness and smooth scrolling behavior.
 
 1.  **Header**: The top section features a bold Title ("BMI Calculator") and a subtitle to clearly state the app's purpose.
-2.  **Input Fields**: We utilize `TextInputLayout` with the `OutlinedBox` style.
-    *   We provide two distinct fields for **Weight (kg)** and **Height (m)**.
-    *   This component provides built-in accessibility (hints move to top) and error display states.
+2.  **Input Sections**: We use **Material Cards** to group input controls.
+    *   Each section contains a label and a value display.
+    *   **Sliders** (`com.google.android.material.slider.Slider`) are used for intuitive **Weight (kg)** and **Height (cm)** selection.
+    *   This provides a modern, interactive user experience compared to traditional text fields.
 3.  **Calculate Button**: A prominent, full-width `MaterialButton` with rounded corners triggers the computation.
 4.  **Result Card**: A `MaterialCardView` is used to display the results.
     *   It remains invisible until a calculation is performed.
@@ -34,9 +35,8 @@ The core logic resides in `MainActivity.java` and follows the standard Body Mass
 $$BMI = \frac{Weight (kg)}{Height (m)^2}$$
 
 ### Implementation Steps
-1.  **Input Parsing**: The app retrieves strings from the input fields and parses them into `float` values.
-    *   *Error Handling*: It includes a `try-catch` block to handle non-numeric inputs and prevent crashes.
-    *   *Validation*: It explicitly checks for empty fields and ensures logic handles potential division by zero (height <= 0).
+1.  **Input Parsing**: The app retrieves float values directly from the **Sliders**.
+    *   *Validation*: It ensures logic handles potential division by zero (height <= 0).
 2.  **Calculation**: The formula is applied: `result = weight / (height * height)`.
 3.  **Classification**: The result is compared against standard BMI ranges to assign a category and a color code for visual feedback.
 
